@@ -13,20 +13,20 @@
 | Name          | PennKey  | Primary Role(s)                          | Secondary Skills                 |
 |--------------|----------|-------------------------------------------|----------------------------------|
 | Nico Marquez | namquez | Frontend Dev, UX & Writing | Data Analysis, Experiment Design |
-| [TBD 2]       | [tbd2]  | Backend Dev, API Integration             | DevOps, Database Design          |
+| Kelechi Obike       | kobike  | Backend Dev, API Integration             | DevOps, Database Design          |
 | Benjamin Ham | benjiham  | QC & Aggregation Module                  | Statistics, Python               |
 | Kieran Chetty       | chettyk  | Crowd Recruitment & Analytics            | Survey Design, Visualization     |
 
 ### Team Skills Inventory
 
 **Skills we have:**
-- Web frontend (React/JS): Nico (namquez), chettyk
-- Basic backend & APIs (Node/Express): [tbd2]
+- Web frontend (React/JS): Nico (namquez), chettyk,
+- Basic backend & APIs (Node/Express): Kelechi(ktobike)
 - UX writing / user research: Nico (namquez)
-- Data analysis & basic statistics: Nico (namquez), benjiham
+- Data analysis & basic statistics: Nico (namquez), benjiham, Kelechi(ktobike)
 
 **Skills we need to learn/acquire:**
-- Map APIs (Leaflet/Mapbox): Needed for interactive truck map – [tbd2] will learn it  
+- Map APIs (Leaflet/Mapbox): Needed for interactive truck map – Kelechi will learn it  
 - Robust QC/aggregation patterns: Needed for combining crowd signals – chettyk will learn and prototype in Python  
 - Recruitment at scale (beyond class): Needed to reach enough Penn students – Nico will explore channels and messaging patterns
 
@@ -128,8 +128,8 @@ _List all major components with point values (1–4). Target total: 15–20._
 |--------------------------------------|---------------------------------------------------------------------------------------------|--------|-----------|-------------------------------------------|
 | 1. Seed & Truck Directory Module     | Create and maintain list of ~8–10 Penn trucks with base info and initial locations.        | 2      | Nico    | None                                      |
 | 2. End-User Map & Detail UI         | React/map interface showing trucks, statuses, and detail pages (menus, hours).             | 4      | Nico    | Component 1 (seed data), basic backend    |
-| 3. Crowd Submission & API Backend    | REST endpoints and DB tables for check-ins, photos, and simple categorical inputs.         | 4      | [tbd2]    | Component 1, DB setup                     |
-| 4. QC Module                         | Filters spammy/low-quality submissions and computes worker reliability / agreement scores. | 4      | [tbd3]    | Component 3 (submissions), sample data    |
+| 3. Crowd Submission & API Backend    | REST endpoints and DB tables for check-ins, photos, and simple categorical inputs.         | 4      | Kelechi   | Component 1, DB setup                     |
+| 4. QC Module                         | Filters spammy/low-quality submissions and computes worker reliability / agreement scores. | 4      | Kelechi    | Component 3 (submissions), sample data    |
 | 5. Aggregation Module                | Combines QC-passed reports into per-truck status, average wait times, confidence scores.   | 3      | Benji   | Components 3 & 4                          |
 | 6. Admin Dashboard & Analytics UI    | Simple internal view of trucks, recent submissions, QC results, and aggregated states.     | 3      | Kieran  | Components 3, 4, 5                        |
 
@@ -721,7 +721,7 @@ Assume Weeks 1–4 start immediately after this proposal.
 - Milestone: Core data model and basic frontend skeleton.  
 - Tasks:
   - [ ] Seed initial truck list and store in DB – Nico  
-  - [ ] Set up backend and DB schema (trucks, submissions, workers) – [tbd2]  
+  - [ ] Set up backend and DB schema (trucks, submissions, workers) – Kelechi
   - [ ] Build basic React map view with static pins – Nico  
 - Deliverable: End-to-end skeleton: map opens, trucks loaded from DB, no crowd yet.
 
@@ -729,7 +729,7 @@ Assume Weeks 1–4 start immediately after this proposal.
 - Milestone: Crowd submission flow + initial QC prototype.  
 - Tasks:
   - [ ] Implement check-in form and submission API – Benji 
-  - [ ] Implement basic QC filters (distance, rate-limiting) – [tbd3]  
+  - [ ] Implement basic QC filters (distance, rate-limiting) – Kelechi  
   - [ ] Implement simple aggregation (unweighted majority) – Benji  
   - [ ] Run small pilot with friends to collect 20–30 submissions – Nico  
 - Deliverable: Users can submit check-ins, and aggregated presence/line length appears on map.
@@ -738,7 +738,7 @@ Assume Weeks 1–4 start immediately after this proposal.
 - Milestone: Full QC + aggregation and main recruitment push.  
 - Tasks:
   - [ ] Add reliability-based QC and recency weighting – [tbd3]  
-  - [ ] Build admin dashboard to inspect submissions & statuses – [tbd4]  
+  - [ ] Build admin dashboard to inspect submissions & statuses – Kelechi  
   - [ ] Run Week 1-style validation test (r/UPenn, Discord, GroupMes) – Nico  
 - Deliverable: Working LocustGrub with real data, initial analysis of QC/aggregation behavior.
 
@@ -988,7 +988,7 @@ Assume Weeks 1–4 start immediately after this proposal.
 - Nico Marquez, 11/13/2025  
 - Kieran Chetty chettyk, 11/13/2025  
 - Benjamin Ham, 11/13/2025 
-- _________________________ [TBD 4], [Date]
+- Kelechi Obike, 11/13/2025
 
 ---
 
