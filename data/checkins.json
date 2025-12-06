@@ -1,0 +1,31 @@
+[
+  {
+    "id": "12600b3b-0ef8-4933-bae6-422186de5eeb",
+    "truckId": "magic-carpet",
+    "presence": "present",
+    "lineLength": "short",
+    "comment": "N/A",
+    "workerId": "c0170806-1fd1-4ae3-a50e-e06e27791e5e",
+    "createdAt": "2025-11-25T20:13:55.261Z"
+  },
+  {
+    "id": "7f45172f-a9bf-4f49-8ae4-7b7b72c6661f",
+    "truckId": "magic-carpet",
+    "presence": "present",
+    "lineLength": "long",
+    "comment": "No its long",
+    "workerId": "c0170806-1fd1-4ae3-a50e-e06e27791e5e",
+    "createdAt": "2025-11-25T20:14:19.982Z"
+  },
+  {
+    "id": "752b1d7b-d91b-4c27-a04b-fa1cec0364c3",
+    "truckId": "the-q-food-truck",
+    "presence": "present",
+    "lineLength": "short",
+    "comment": "jnjnjnjkjknjk",
+    "rating": 2,
+    "enteredRaffle": true,
+    "workerId": "chettyk@seas.upenn.edu",
+    "createdAt": "2025-12-06T21:55:06.985Z"
+  }
+]
