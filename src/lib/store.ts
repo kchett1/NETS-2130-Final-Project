@@ -87,7 +87,7 @@ export async function getCheckins(options?: {
       ? new Date(Date.now() - minutes * 60 * 1000)
       : null;
 
-  const rows = await sql`
+  const rows = (await sql`
     SELECT id,
            truck_id,
            presence,
@@ -102,7 +102,7 @@ export async function getCheckins(options?: {
     ${truckId ? sql` AND truck_id = ${truckId}` : sql``}
     ${since ? sql` AND created_at >= ${since}` : sql``}
     ORDER BY created_at DESC
-  `;
+  `) as unknown as CheckinRow[];
 
   return rows.map(mapRowToCheckin);
 }
