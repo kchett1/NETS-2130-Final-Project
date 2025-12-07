@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import L from "leaflet";
+import L, { type LatLngExpression } from "leaflet";
 import Link from "next/link";
 
 import type { TruckStatus } from "@/lib/types";
@@ -30,13 +30,13 @@ type TruckMapProps = {
 export function TruckMap({ trucks }: TruckMapProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  const center = useMemo(() => {
-    if (!trucks.length) return [CAMPUS_CENTER.lat, CAMPUS_CENTER.lng] as const;
+  const center = useMemo<LatLngExpression>(() => {
+    if (!trucks.length) return [CAMPUS_CENTER.lat, CAMPUS_CENTER.lng];
     const avgLat =
       trucks.reduce((sum, truck) => sum + truck.lat, 0) / trucks.length;
     const avgLng =
       trucks.reduce((sum, truck) => sum + truck.lng, 0) / trucks.length;
-    return [avgLat, avgLng] as const;
+    return [avgLat, avgLng];
   }, [trucks]);
 
   return (
