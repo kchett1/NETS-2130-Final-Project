@@ -82,37 +82,32 @@ export async function getCheckins(options?: {
   minutes?: number;
 }): Promise<CheckinRecord[]> {
   const { truckId, minutes } = options ?? {};
-  const whereParts: string[] = [];
-  const values: Array<string | Date> = [];
+  const filters: ReturnType<typeof sql>[] = [];
 
   if (truckId) {
-    values.push(truckId);
-    whereParts.push(`truck_id = $${values.length}`);
+    filters.push(sql`truck_id = ${truckId}`);
   }
   if (minutes && minutes > 0) {
-    values.push(new Date(Date.now() - minutes * 60 * 1000));
-    whereParts.push(`created_at >= $${values.length}`);
+    filters.push(sql`created_at >= ${new Date(Date.now() - minutes * 60 * 1000)}`);
   }
 
-  const whereClause = whereParts.length
-    ? `WHERE ${whereParts.join(" AND ")}`
-    : "";
+  const whereClause =
+    filters.length > 0 ? sql`WHERE ${sql.join(filters, sql` AND `)}` : sql``;
 
-  const rows = (await sql.unsafe(
-    `SELECT id,
-            truck_id,
-            presence,
-            line_length,
-            comment,
-            rating,
-            entered_raffle,
-            worker_id,
-            created_at
-     FROM checkins
-     ${whereClause}
-     ORDER BY created_at DESC`,
-    values,
-  )) as unknown as CheckinRow[];
+  const rows = await sql<CheckinRow[]>`
+    SELECT id,
+           truck_id,
+           presence,
+           line_length,
+           comment,
+           rating,
+           entered_raffle,
+           worker_id,
+           created_at
+    FROM checkins
+    ${whereClause}
+    ORDER BY created_at DESC
+  `;
 
   return rows.map(mapRowToCheckin);
 }
