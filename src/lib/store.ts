@@ -112,7 +112,7 @@ export async function getCheckins(options?: {
      ${whereClause}
      ORDER BY created_at DESC`,
     values,
-  )) as CheckinRow[];
+  )) as unknown as CheckinRow[];
 
   return rows.map(mapRowToCheckin);
 }
