@@ -4,8 +4,6 @@ import { SignJWT } from "jose";
 
 const PENN_EMAIL_REGEX = /^[^@]+@([^.]+\.)?upenn\.edu$/;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 function generateCode(): string {
   return Math.floor(100000 + Math.random() * 900000).toString();
 }
@@ -42,6 +40,7 @@ export async function POST(request: Request) {
       .sign(secretKey);
 
     // send the email
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "LocustGrub <no-reply@locustgrub.test>", // your teammate can tweak this
       to: normalized,
