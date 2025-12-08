@@ -16,6 +16,15 @@ function getSecretKey() {
   return new TextEncoder().encode(secret);
 }
 
+function getFromAddress() {
+  // Prefer a configured from address; fall back to Resend sandbox default.
+  // If your domain is verified in Resend, set RESEND_FROM to something like
+  // "LocustGrub <no-reply@yourdomain.com>".
+  return (
+    process.env.RESEND_FROM?.trim() || "LocustGrub <onboarding@resend.dev>"
+  );
+}
+
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
@@ -42,7 +51,7 @@ export async function POST(request: Request) {
     // send the email
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: "LocustGrub <no-reply@locustgrub.test>", // your teammate can tweak this
+      from: getFromAddress(),
       to: normalized,
       subject: "Your LocustGrub verification code",
       text: `Your LocustGrub verification code is ${code}. It expires in 10 minutes.`,
