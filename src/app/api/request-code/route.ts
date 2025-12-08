@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { SignJWT } from "jose";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const PENN_EMAIL_REGEX = /^[^@]+@([^.]+\.)?upenn\.edu$/;
 
 function generateCode(): string {
@@ -15,6 +14,24 @@ function getSecretKey() {
     throw new Error("EMAIL_TOKEN_SECRET is not set");
   }
   return new TextEncoder().encode(secret);
+}
+
+function getTransport() {
+  const host = process.env.SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT || "587");
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!host || !port || !user || !pass) {
+    throw new Error("SMTP settings are not fully configured");
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: false,
+    auth: { user, pass },
+  });
 }
 
 export async function POST(request: Request) {
@@ -37,9 +54,10 @@ export async function POST(request: Request) {
       .setExpirationTime("10m")
       .sign(secretKey);
 
-    const from = process.env.RESEND_FROM || "LocustGrub <onboarding@resend.dev>";
+    const transporter = getTransport();
+    const from = process.env.SMTP_FROM || process.env.SMTP_USER!;
 
-    await resend.emails.send({
+    await transporter.sendMail({
       from,
       to: normalized,
       subject: "Your LocustGrub verification code",
