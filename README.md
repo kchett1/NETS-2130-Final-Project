@@ -174,7 +174,7 @@ LocustGrub is a Penn-only food truck radar. We seed a directory of 10 popular tr
 - A Next.js 15 app with Tailwind styling
 - API routes for reading truck status, recording check-ins, and viewing recent submissions
 - Minimal QC (rate limiting + required fields) and 30-minute majority-vote aggregation
-- A live map (`/map`), top-trucks leaderboard (`/top`), deals/rewards hub (`/deals`), and an internal `/admin` page for debugging submissions
+- A live map (`/map`), top-trucks leaderboard (`/top`), engagement leaderboard (`/leaderboard`), and an internal `/admin` page for debugging submissions
 
 ## Tech stack
 
@@ -197,7 +197,7 @@ npm run dev          # http://localhost:3000
 | `/` | List view with search, plus button to launch the review modal. |
 | `/map` | Leaflet map with pins, popovers, and a Google Maps fallback link. |
 | `/top` | Top trucks based on past-24h ratings and recent comments. |
-| `/deals` | Mocked promotions + explanation of the raffle incentive. |
+| `/leaderboard` | Engagement scoreboard for volunteers and most-checked trucks. |
 | `/admin` | Internal log of the last 100 submissions (ratings, raffle opt-ins, etc.). |
 
 ### Persistent storage

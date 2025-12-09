@@ -59,10 +59,10 @@ export default async function Home() {
                 Top trucks
               </Link>
               <Link
-                href="/deals"
+                href="/leaderboard"
                 className="rounded-full border border-slate-200/80 px-4 py-1.5 font-semibold text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
               >
-                Deals
+                Leaderboard
               </Link>
               <Link
                 href="/admin"
